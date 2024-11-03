@@ -1,0 +1,68 @@
+// eslint.config.js
+import react from 'eslint-plugin-react';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import reactHooks from 'eslint-plugin-react-hooks';
+import prettier from 'eslint-plugin-prettier';
+import importPlugin from 'eslint-plugin-import';
+import typescript from '@typescript-eslint/eslint-plugin';
+
+export default [
+  {
+    env: {
+      browser: true,
+      node: true,
+      es6: true,
+    },
+    languageOptions: {
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        ecmaFeatures: { jsx: true },
+      },
+    },
+    plugins: {
+      react,
+      import: importPlugin,
+      'jsx-a11y': jsxA11y,
+      'react-hooks': reactHooks,
+      prettier,
+      '@typescript-eslint': typescript,
+    },
+    rules: {
+      // Warnings
+      'no-console': 'warn',
+      'no-unused-vars': 'warn',
+      'no-debugger': 'warn',
+      'prettier/prettier': 'warn',
+      
+      // React specific rules
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      
+      // TypeScript specific rules
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      
+      // Accessibility rules
+      'jsx-a11y/anchor-is-valid': 'off',
+      
+      // Import rules
+      'import/order': ['warn', { groups: [['builtin', 'external', 'internal']] }],
+      'import/no-unresolved': 'error',
+      'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      
+      // React hooks rules
+      'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+      'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
+    },
+    settings: {
+      react: { version: 'detect' }, // Automatically detect the react version
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
+    },
+  },
+];

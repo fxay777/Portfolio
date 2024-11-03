@@ -1,0 +1,30 @@
+# EditorConfig is awesome: https://editorconfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# Default settings for all files
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+# 2 space indentation for Typescript, Javascript, CSS, and JSON files
+[*.{ts,tsx,js,jsx,css,json}]
+indent_style = space
+indent_size = 2
+
+# YAML files (como .eslintrc.yml, .prettierrc.yml, etc.)
+[*.yml]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
+# Ignore Makefile indentation style
+[Makefile]
+indent_style = tab
